@@ -6,20 +6,26 @@ namespace CleanCode.OutputParameters
 {
     public class OutputParameters
     {
+        public class GetCustomerResult
+        {
+            public IEnumerable<Customer> Customers { get; set; }
+            public int TotalCount { get; set; }
+        }
+
         public void DisplayCustomers()
         {
-            int totalCount = 0;
-            var customers = GetCustomers(1, out totalCount);
+            const int pageIndex = 1;
+            var result = GetCustomers(pageIndex);
 
-            Console.WriteLine("Total customers: " + totalCount);
-            foreach (var c in customers)
+            Console.WriteLine("Total customers: " + result.TotalCount);
+            foreach (var c in result.Customers)
                 Console.WriteLine(c);
         }
 
-        public IEnumerable<Customer> GetCustomers(int pageIndex, out int totalCount)
+        public GetCustomerResult GetCustomers(int pageIndex)
         {
-            totalCount = 100;
-            return new List<Customer>();
+            const int totalCount = 100;
+            return new GetCustomerResult(){TotalCount = totalCount,Customers = new List<Customer>()} ;
         }
     }
 }
