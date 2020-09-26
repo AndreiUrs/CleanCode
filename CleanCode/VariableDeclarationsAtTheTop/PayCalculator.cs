@@ -3,7 +3,7 @@ namespace CleanCode.VariableDeclarationsAtTheTop
 {
     public class PayCalculator
     {
-        private PayFrequency _payFrequency;
+        private readonly PayFrequency _payFrequency;
 
         public PayCalculator(PayFrequency payFrequency)
         {
@@ -14,42 +14,33 @@ namespace CleanCode.VariableDeclarationsAtTheTop
         {
             decimal overtimeHours = 0;
             decimal regularHours = 0;
-            decimal regularPay = 0;
-            decimal overtimePay = 0;
 
-            decimal grossPay = 0;
-
-            if (_payFrequency == PayFrequency.Fortnightly)
+            switch (_payFrequency)
             {
-                if (hours > 80)
-                {
+                case PayFrequency.Fortnightly when hours > 80:
                     overtimeHours = hours - 80;
                     regularHours = 80;
-                }
-                else
+                    break;
+                case PayFrequency.Fortnightly:
                     regularHours = hours;
-            }
-
-
-            else if (_payFrequency == PayFrequency.Weekly)
-            {
-                if (hours > 40)
-                {
+                    break;
+                case PayFrequency.Weekly when hours > 40:
                     overtimeHours = hours - 40;
                     regularHours = 40;
-                }
-                else
+                    break;
+                case PayFrequency.Weekly:
                     regularHours = hours;
+                    break;
             }
 
-
+            decimal overtimePay = 0;
             if (overtimeHours > 0m)
             {
                 overtimePay += (rate * 1.5m) * overtimeHours;
             }
 
-            regularPay = (regularHours * rate);
-            grossPay = regularPay + overtimePay;
+            var regularPay = (regularHours * rate);
+            var grossPay = regularPay + overtimePay;
 
             return grossPay;
         }
