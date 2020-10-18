@@ -53,9 +53,11 @@
     <Compile Include="FullRefactoring\Example1.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="LongMethods\Example1.cs">
+    <Compile Include="LongMethods\DataSource.cs" />
+    <Compile Include="LongMethods\Download.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="LongMethods\MemoryFile.cs" />
     <Compile Include="MagicNumbers\MagicNumbers.cs" />
     <Compile Include="LongParameterList\LongParameterList.cs" />
     <Compile Include="Names\Names.cs" />
