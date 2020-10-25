@@ -50,9 +50,10 @@
   <ItemGroup>
     <Compile Include="Comments\Comments.cs" />
     <Compile Include="DuplicatedCode\DuplicatedCode.cs" />
-    <Compile Include="FullRefactoring\Example1.cs">
+    <Compile Include="FullRefactoring\PostController.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="FullRefactoring\PostRepository.cs" />
     <Compile Include="LongMethods\DataSource.cs" />
     <Compile Include="LongMethods\Download.cs">
       <SubType>ASPXCodeBehind</SubType>

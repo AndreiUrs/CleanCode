@@ -1,26 +1,20 @@
-using System.Linq;
+﻿using System.Linq;
 
 namespace CleanCode.FullRefactoring
 {
     public class PostRepository
     {
-        private readonly PostDbContext _dbContext;
-
+        private readonly PostDbContext _dBContext;
         public PostRepository()
         {
-            _dbContext = new PostDbContext();
+            _dBContext = new PostDbContext();
         }
-
-        public Post GetPost(int postId)
-        {
-            return _dbContext.Posts.SingleOrDefault(p => p.Id == postId);
-        }
-
+        public Post GetPost(int postId) => _dBContext.Posts.SingleOrDefault(p => p.Id == postId);
         public void SavePost(Post post)
         {
-            _dbContext.Posts.Add(post);
-            _dbContext.SaveChanges();
+            _dBContext.Posts.Add(post);
+            _dBContext.SaveChanges();
         }
+
     }
 }
-

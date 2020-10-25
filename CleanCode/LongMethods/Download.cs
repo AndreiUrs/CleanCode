@@ -43,7 +43,7 @@ namespace CleanCode.LongMethods
 
         private byte[] CreateCSV()
         {
-            var ms = _memoryFile.CreateMemoryFile(_dataSource.ReadFromDataTable());
+            var ms = _memoryFile.CreateMemoryFile(_dataSource.ReadFromDataTable("Table"));
             var byteArray = ms.ToArray();
             ms.Flush();
             ms.Close();
